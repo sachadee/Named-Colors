@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Color Map Picker</title>
+    <style>
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(20, 1fr);
+            gap: 2px;
+            width: 80%;
+            margin: 20px auto;
+        }
+        .color-rect {
+            width: 100%;
+            padding-bottom: 100%;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .color-rect:hover {
+            transform: scale(1.1);
+            z-index: 10;
+            position: relative;
+        }
+        #color-info {
+            text-align: center;
+            margin: 20px;
+            font-size: 18px;
+            font-family: monospace;
+        }
+        .selected-color {
+            width: 50px;
+            height: 50px;
+            margin: 10px auto;
+            border: 2px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Color Map Picker</h1>
+    <div id="color-info">
+        <div id="selected-rgb">Click a color below</div>
+        <div id="selected-hex"></div>
+        <div class="selected-color" id="color-display"></div>
+    </div>
+    
+    <div class="color-grid" id="color-grid"></div>
+
+    <script>
+        // Generate color grid
+        const colorGrid = document.getElementById('color-grid');
+        
+        // Create a gradient of colors
+        for (let r = 0; r <= 255; r += 25) {
+            for (let g = 0; g <= 255; g += 25) {
+                for (let b = 0; b <= 255; b += 10) {
+                    const colorRect = document.createElement('div');
+                    colorRect.className = 'color-rect';
+                    colorRect.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+                    colorRect.dataset.rgb = `${r}, ${g}, ${b}`;
+                    
+                    colorRect.addEventListener('click', function() {
+                        const rgb = this.dataset.rgb;
+                        const rgbArray = rgb.split(',').map(num => parseInt(num.trim()));
+                        
+                        // Convert to hex
+                        const hex = rgbArray.map(x => {
+                            const hex = x.toString(16);
+                            return hex.length === 1 ? '0' + hex : hex;
+                        }).join('');
+                        
+                        // Update display
+                        document.getElementById('selected-rgb').textContent = `RGB: rgb(${rgb})`;
+                        document.getElementById('selected-hex').textContent = `HEX: #${hex.toUpperCase()}`;
+                        document.getElementById('color-display').style.backgroundColor = `rgb(${rgb})`;
+                    });
+                    
+                    colorGrid.appendChild(colorRect);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
