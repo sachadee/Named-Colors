@@ -52,9 +52,12 @@ def plot_colortable(colors, *, ncols=4, sort_colors=True):
         text_pos_x = cell_width * col + swatch_width + 7
         jsonColorRGB[name]=toRGB(mcolors.to_rgb(colors[name]))
         jsonColorHEX[name]=colors[name]
+        
+        ####CHANGE THE FILE NAMES IN THE 2 FILES BELOWS FOR XKCD
+        ####"colorsXKCD_RGB.json" and "colorsXKCD_HEX.json"
+        
         with open("colorsCSS4_RGB.json", "w") as outfile:
             json.dump(jsonColorRGB, outfile, indent=4)  
-
         with open("colorsCSS4_HEX.json", "w") as outfile:
             json.dump(jsonColorHEX, outfile, indent=4)  
 
@@ -69,8 +72,6 @@ def plot_colortable(colors, *, ncols=4, sort_colors=True):
         )
 
     return fig
-    
-    
     
 # xkcd_fig = plot_colortable(mcolors.XKCD_COLORS)
 # xkcd_fig.savefig("colorsXKCD_RGB.png")   
