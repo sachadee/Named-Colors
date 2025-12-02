@@ -1,7 +1,7 @@
 # Named-Colors
 ## Named colors conventions and json database for developper
 
-## Python Code to generate the Maps and JSONs
+### Python Code to generate the Maps and JSONs
 
 [Maps and JSONs Generator .py](https://github.com/sachadee/Named-Colors/blob/SachaDee/colors.py)
 
