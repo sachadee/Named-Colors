@@ -7,5 +7,5 @@
 
 ## XKCP Color Map
 
- ![XKCP color Map]('https://github.com/sachadee/Named-Colors/blob/SachaDee/images/colorsXKCD.png')
+ ![XKCP color Map](https://github.com/sachadee/Named-Colors/blob/SachaDee/images/colorsXKCD.png)
 
